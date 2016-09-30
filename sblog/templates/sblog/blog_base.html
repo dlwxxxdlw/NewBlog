@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "sblog/base.html" %}
+
+{% block extra_head %}
+    <style>
+        body{
+            padding-top: 60px;
+        }
+    </style>
+{% endblock %}
+
+{% block header %}
+    {% block menu %}
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BLOG</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active divider-vertical">
+                        <a href="{% url sblog:bloglist %}"></a>
+                    </li>
+                    <li>
+                        <a href="#">about</a>
+                    </li>
+                    <li>
+                        <a href="#">contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+{% endblock %}

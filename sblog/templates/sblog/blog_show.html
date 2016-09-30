@@ -1,0 +1,10 @@
+<!doctype html>
+{% block title %}{{blog.caption}}{% endblock %}
+
+{% block content %}
+<div class="content">
+	<h2>blog show</h2>
+	<h4>{{ blog.caption }}</h4>
+	<div>{{ blog.content }}</div>
+</div>
+{% endblock %}
