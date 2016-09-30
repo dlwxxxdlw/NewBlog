@@ -1,12 +1,13 @@
 <!doctype html>
 {% extends "sblog/blog_base.html" %}
 {% load threadedcomments_tags %}
-
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 {% block title %} blog list {% endblock %}
 
 {% block article %}
 <article class="container-fluid">
-    {% for blog in  blogs %}
+    {% for blog in blogs %}
         <h4><a href="{% url 'sblog:detailblog' blog.id %}"></a> </h4>
         <p class="muted">
             {% for tag in blog.tags.all %}
@@ -22,7 +23,9 @@
                 <p class="muted"><i class="icon-time"></i><small>{{ blog.publish_time }}</small> </p>
             </div>
             <div class="span2 offset7">
-                <a href="{% url 'sblog:detailblog' blog.id %}" title="delete"><i class="icon-trash"></i></a>
+                <a href="{% url 'sblog:delblog' blog.id %}" title="delete"><i class="icon-trash"></i></a>
+                {% get_comment_count for blog as comment_count %}
+                <a href="{% url 'sblog:detailblog' blog.id %}#cmt" title="comment"><i class="icon-comment"></i>{{ comment_count }} </a>
             </div>
         </div>
     {% endfor %}

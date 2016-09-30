@@ -8,4 +8,5 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^bloglist/',sblog_views.blog_list,name='bloglist'),
     url(r'^blog/(?P<id>\d+)/$',sblog_views.blog_show,name = "detailblog"),
+    url(r'^blog/(?P<id>\w+)/del/$',sblog_views.blog_del,name="delblog"),
 ]
