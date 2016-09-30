@@ -17,10 +17,12 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 from sblog import urls as sblog_urls
+from django_comments import urls as comments_urls
 
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sblog/', include(sblog_urls,namespace= "sblog")),
+    url(r'articles/comments/',include(comments_urls)),
 ]

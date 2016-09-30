@@ -1,27 +1,28 @@
 <!doctype html>
 {% extends "sblog/blog_base.html" %}
-{% load comments %}
+{% load threadedcomments_tags %}
 
 {% block title %} blog list {% endblock %}
 
 {% block article %}
 <article class="container-fluid">
     {% for blog in  blogs %}
-        <h4><a href="{% url sblog:detailblog blog.id %}"></a> </h4>
+        <h4><a href="{% url 'sblog:detailblog' blog.id %}"></a> </h4>
         <p class="muted">
             {% for tag in blog.tags.all %}
                 <i class="icon-tag"></i><small>{{ tag }}</small>
             {% endfor %}
         </p>
         {% load custom_markdown %}
-        <div>{{ blog.content|custom_markdown:'codehilite' }}</div>
+        <h2>标题:{{ blog.caption }}</h2>
+        <div>{{ blog.content|custom_markdown }}</div>
 
         <div class="row-fluid">
             <div class="span3">
                 <p class="muted"><i class="icon-time"></i><small>{{ blog.publish_time }}</small> </p>
             </div>
             <div class="span2 offset7">
-                <a href="{% url sblog:detailblog blog.id %}" title="delete"><i class="icon-trash"></i></a>
+                <a href="{% url 'sblog:detailblog' blog.id %}" title="delete"><i class="icon-trash"></i></a>
             </div>
         </div>
     {% endfor %}
