@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends "sblog/blog_base.html" %}
+
+{% block title %} 发布文字 {% endblock %}
+
+{% block article %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="vTextField">
+            <label for="id_caption" ><h4>Title</h4></label>
+            {% if form.caption.errors %}
+                <div class="alert-error">
+                    {{ form.caption.errors }}
+                </div>
+            {% endif %}
+            {{ form.caption }}
+        </div>
+        <div class="vTextField">
+            <label for="id_content"><h4>Content</h4></label>
+            {% if form.caption.errors %}
+                <div class="alert-error">
+                    {{ form.content.errors }}
+                </div>
+            {% endif %}
+            {{ form.caption }}
+        </div>
+    </form>
+{% endblock %}

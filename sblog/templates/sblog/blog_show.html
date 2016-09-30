@@ -1,10 +1,44 @@
 <!doctype html>
+{% extends "sblog/blog_base.html" %}
 {% block title %}{{blog.caption}}{% endblock %}
 
-{% block content %}
+{% block article %}
 <div class="content">
-	<h2>blog show</h2>
-	<h4>{{ blog.caption }}</h4>
-	<div>{{ blog.content }}</div>
+	<article class="container-fluid">
+        {% block article_title %}
+            <h2>{{ blog.caption }}</h2>
+        {% endblock %}
+        <p class="muted">
+            <i class="icon-user"></i><small>{{ blog.author }}</small>
+            <i class="icon-time offset1" ></i><small>{{ blog.publish_time }}</small>
+        </p>
+        <section>
+            <div class="container-fluid">
+                {% block article_content %}
+                    {% load custom_markdown %}
+                    {{ blog.content|custom_markdown }}
+                {% endblock %}
+            </div>
+        </section>
+        <section>
+            <div class="row-fluid">
+                <div class="span3">
+                    <p>
+                        {% for tag in blog.tags.all %}
+                            <i class="icon-tag"></i>
+                            <small class="muted">{{ tag }}</small>
+                        {% endfor %}
+                    </p>
+                </div>
+                <div class="span2 offset7">
+                    <a href="{% url 'sblog:delblog' blog.id %}" title="delete" ><i class="icon-trash"></i> </a>
+                    {% load threadedcomments_tags %}
+                    {% get_comment_count for blog as comment_count %}
+                    <a href="#cmt" title="comment"><i class="icon-comment offset1"></i>{{ comment_count }} </a>
+                </div>
+            </div>
+        </section>
+    </article>
+    <hr></hr>
 </div>
 {% endblock %}
