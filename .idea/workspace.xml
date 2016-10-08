@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2c67025-1f68-416a-a33a-4c7ac335fa90" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blogDemo/settings.py" afterPath="$PROJECT_DIR$/blogDemo/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sblog/templates/sblog/base.html" afterPath="$PROJECT_DIR$/sblog/templates/sblog/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sblog/templates/sblog/blog_show.html" afterPath="$PROJECT_DIR$/sblog/templates/sblog/blog_show.html" />
-    </list>
+    <list default="true" id="c2c67025-1f68-416a-a33a-4c7ac335fa90" name="Default" comment="" />
     <ignored path="blogDemo.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -57,11 +53,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog_show.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="blog_show.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sblog/templates/sblog/blog_show.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sblog/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -613,14 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sblog/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sblog/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -687,6 +685,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sblog/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding />
         </state>
       </provider>
