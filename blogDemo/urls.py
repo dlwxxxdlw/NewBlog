@@ -24,5 +24,5 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sblog/', include(sblog_urls,namespace= "sblog")),
-    url(r'articles/comments/',include(comments_urls)),
+    url(r'^comments/',include(comments_urls)),
 ]

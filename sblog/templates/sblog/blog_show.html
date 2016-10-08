@@ -31,7 +31,8 @@
                     </p>
                 </div>
                 <div class="span2 offset7">
-                    <a href="{% url 'sblog:delblog' blog.id %}" title="delete" ><i class="icon-trash"></i> </a>
+                    <a href="{% url 'sblog:updateblog' blog.id %}" title="edit"><i class="icon-edit"></i> </a>
+                    <a href="{% url 'sblog:delblog' blog.id %}" title="delete" ><i class="icon-trash offset1"></i> </a>
                     {% load threadedcomments_tags %}
                     {% get_comment_count for blog as comment_count %}
                     <a href="#cmt" title="comment"><i class="icon-comment offset1"></i>{{ comment_count }} </a>
@@ -39,6 +40,5 @@
             </div>
         </section>
     </article>
-    <hr></hr>
 </div>
 {% endblock %}

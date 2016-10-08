@@ -6,23 +6,32 @@
 {% block article %}
     <form action="" method="post">
         {% csrf_token %}
-        <div class="vTextField">
+        <div class="vTextField span12">
             <label for="id_caption" ><h4>Title</h4></label>
             {% if form.caption.errors %}
-                <div class="alert-error">
+                <div class="alert alert-error">
                     {{ form.caption.errors }}
                 </div>
             {% endif %}
             {{ form.caption }}
         </div>
-        <div class="vLargeTextField ">
+        <div class="vLargeTextField span12">
             <label for="id_content"><h4>Content</h4></label>
             {% if form.caption.errors %}
-                <div class="alert-error">
+                <div class="alert-error alert-error">
                     {{ form.content.errors }}
                 </div>
             {% endif %}
-            {{ form.caption }}
+            {{ form.content }}
+        </div>
+        <div class="vTextField span12">
+            <label for="id_tag">tags</label>
+            {% if tag.tag_name.errors %}
+                <div class="alert alert-error">
+                    {{ tag.tag_name.errors }}
+                </div>
+            {% endif %}
+            {{ tag.tag_name }}
         </div>
         <div class="form-actions">
             <input class="btn btn-primary" type="submit" value="Save&Add">
