@@ -54,14 +54,19 @@ def blog_add(request,id=""):
                 blog.tags.add(Tag.objects.get(tag_name=taglist.strip()))
                 blog.save()
             id = Blog.objects.order_by('-publish_time')[0].id
+            print("DONE")
             return redirect("/sblog/blog/%s" % id)
+        else:
+            print(form.is_valid())
+            print(tag.is_valid())
     else:
         form = BlogForm()
         tag = TagForm(initial={'tag_name':'notags'})
     return render(request,"sblog/blog_add.html",{'form':form,'tag':tag})
 
 def blog_update(request,id=""):
-    id = id
+    id=id
+    blog = Blog.objects.get(id=id)
     if request.method == "POST":
         form = BlogForm(request.POST)
         tag = TagForm(request.POST)
@@ -74,7 +79,7 @@ def blog_update(request,id=""):
                 Tag.objects.get_or_create(tag_name=tag.strip())
             title = cd['caption']
             content = cd['content']
-            blog = Blog.objects.get(id=id)
+
             if blog:
                 blog.caption = title
                 blog.content = content
@@ -99,7 +104,7 @@ def blog_update(request,id=""):
             blog = Blog.objects.get(id=id)
         except Exception:
             raise Http404
-        form = BlogForm(initial={'caption':blog.caption,'content':blog.content},auto_id=False)
+        form = BlogForm(initial={'caption':blog.caption,'content':blog.content})
         tags = blog.tags.all()
         if tags:
             taginit = ""

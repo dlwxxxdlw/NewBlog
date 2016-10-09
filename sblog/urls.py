@@ -2,6 +2,8 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from sblog import views as sblog_views
+from django.views.generic import FormView
+from .forms import BlogForm
 
 admin.autodiscover()
 

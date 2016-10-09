@@ -2,50 +2,53 @@
 {% extends "sblog/blog_base.html" %}
 {% block title %}{{blog.caption}}{% endblock %}
 
-{% block article %}
-<div class="content">
-	<article class="container-fluid">
-        {% block article_title %}
-            <h2>{{ blog.caption }}</h2>
-        {% endblock %}
-        <p class="muted">
-            <i class="icon-user"></i><small>{{ blog.author }}</small>
-            <i class="icon-time offset1" ></i><small>{{ blog.publish_time }}</small>
-        </p>
-        <section>
-            <div class="container-fluid">
-                {% block article_content %}
-                    {% load custom_markdown %}
-                    {{ blog.content|custom_markdown }}
-                {% endblock %}
-            </div>
-        </section>
-        <section>
-            <div class="row-fluid">
-                <div class="span3">
-                    <p>
-                        {% for tag in blog.tags.all %}
-                            <i class="icon-tag"></i>
-                            <small class="muted">{{ tag }}</small>
-                        {% endfor %}
-                    </p>
+{% block content %}
+    {% block article %}
+    <div class="content">
+        <article class="container-fluid">
+            {% block article_title %}
+                <h2 style="color: #dd1144;">{{ blog.caption }}</h2>
+            {% endblock %}
+            <p class="muted">
+                <i class="icon-user"></i><small>{{ blog.author }}</small>
+                <i class="icon-time offset1" ></i><small>{{ blog.publish_time }}</small>
+            </p>
+            <section>
+                <div class="container-fluid">
+                    {% block article_content %}
+                        {% load custom_markdown %}
+                        {{ blog.content|custom_markdown }}
+                    {% endblock %}
                 </div>
-                <div class="span2 offset7">
-                    <a href="{% url 'sblog:updateblog' blog.id %}" title="edit"><i class="icon-edit"></i> </a>
-                    <a href="{% url 'sblog:delblog' blog.id %}" title="delete" ><i class="icon-trash offset1"></i> </a>
-                    {% load threadedcomments_tags %}
-                    {% get_comment_count for blog as comment_count %}
-                    <a href="#cmt" title="comment"><i class="icon-comment offset1"></i>{{ comment_count }} </a>
+            </section>
+            <section>
+                <div class="row-fluid">
+                    <div class="col-md-10">
+                        <p>
+                            {% for tag in blog.tags.all %}
+                                <i class="icon-tag"></i>
+                                <small class="muted">{{ tag }}</small>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'sblog:updateblog' blog.id %}" title="edit"><i class="glyphicon glyphicon-edit col-md-offset-1"></i> </a>
+                        <a href="{% url 'sblog:delblog' blog.id %}" title="delete" ><i class="glyphicon glyphicon-trash col-md-offset-1"></i> </a>
+                        {% load threadedcomments_tags %}
+                        {% get_comment_count for blog as comment_count %}
+                        <a href="#cmt" title="comment"><i class="glyphicon glyphicon-comment col-md-offset-1"></i>{{ comment_count }} </a>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </article>
-</div>
-{% comment %}
-{% block mycomments %}
-    <h2>Comments for {{ blog.title }}:</h2>
-    {% render_comment_list for blog %}   这段代码有问题
-    {% render_comment_form for blog %}
-{% endblock %}
-{% endcomment %}
+            </section>
+        </article>
+    </div>
+
+    {% comment %}
+    {% block mycomments %}
+        <h2>Comments for {{ blog.title }}:</h2>
+        {% render_comment_list for blog %}   <!--这段代码有问题-->
+        {% render_comment_form for blog %}
+    {% endblock %}
+    {% endcomment %}
+    {% endblock %}
 {% endblock %}

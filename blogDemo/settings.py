@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'threadedcomments',
     'django.contrib.sites',
     'django_comments',
+    'pagedown',
 ]
 
 COMMENTS_APP = 'threadedcomments'

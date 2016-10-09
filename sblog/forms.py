@@ -1,8 +1,20 @@
 from django import forms
 
-class BlogForm(forms.Form):
-    caption = forms.CharField(label='title',max_length=100)
-    content = forms.CharField(widget=forms.Textarea)
+from pagedown.widgets import PagedownWidget
+from .models import Blog,Tag
 
-class TagForm(forms.Form):
-    tag_name = forms.CharField()
+class BlogForm(forms.ModelForm):
+    caption = forms.CharField(widget=PagedownWidget())
+    content = forms.CharField(widget=PagedownWidget())
+
+    class Meta:
+        model = Blog
+        fields = '__all__'
+
+class TagForm(forms.ModelForm):
+    tag_name = forms.CharField(widget=PagedownWidget())
+
+    class Meta:
+        model = Tag
+        fields = '__all__'
+

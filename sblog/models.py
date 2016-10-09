@@ -7,7 +7,7 @@ from django.db import models
 
 class Tag(models.Model):
     """docstring for Tags"""
-    tag_name = models.CharField(u'标签',max_length=20,blank=True)
+    tag_name = models.CharField(u'标签',max_length=100,blank=True)
     create_time = models.DateTimeField(u'创建时间',auto_now_add=True)
 
     def __unicode__(self):
