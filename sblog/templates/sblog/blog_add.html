@@ -6,6 +6,7 @@
 {% block article %}
     <form action="" method="post" >
         {% csrf_token %}
+
         <div class="form-group row ">
             <div class="col-md-12">
                 <label for="id_caption">Title</label>
@@ -39,18 +40,21 @@
                 <label for="id_tag">Tags</label>
             </div>
             <div class="col-md-12">
-                {% if tag.tag_name.errors %}
-                    <div class="alert alert-danger">
-                        {{ tag.tag_name.errors }}
-                    </div>
-                {% else %}
-                    {{ tag.tag_name }}
-                {% endif %}
+                {{ form.tags }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12">
+                <label for="id_author">Author(s)</label>
+            </div>
+            <div class="col-md-12">
+                {{ form.author.name }}
             </div>
         </div>
         <div>
             <input class="btn btn-primary" type="submit" value="Save&Add">
         </div>
+
         {% for field in form %}
             <div class="fieldWrapper">
                 {{ field.errors }}
