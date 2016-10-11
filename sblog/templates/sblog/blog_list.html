@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <button class="btn btn-success" onclick="toggle({{ blog.id }})">SHOW</button>
+        <button class="btn btn-warning" onclick="toggle({{ blog.id }})">SHOW CONTENT</button>
         <div class="row" id="{{ blog.id }}" style="display: none;">{{ blog.content|custom_markdown }}</div>
 
         <div class="row">
@@ -37,7 +37,7 @@
                 <a href="{% url 'sblog:detailblog' blog.id %}#cmt" title="comment"><i class="glyphicon glyphicon-comment col-md-offset-1"></i>{{ comment_count }} </a>
             </div>
         </div>
-        <hr style="filter:alpha(opacity=100,finishopacity=0,style=2);width:600px;background-color:#d9534f;height:5px" />
+        <hr style="filter:alpha(opacity=100,finishopacity=0,style=2);width:600px;background-color:#ebcccc;height:5px" />
     {% endfor %}
 </article>
 {% endblock %}
