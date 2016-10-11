@@ -31,8 +31,8 @@ class Blog(models.Model):
     publish_time = models.DateTimeField(u'发布时间',auto_now_add=True)
     update_time = models.DateTimeField(u'更新时间',auto_now=True)
 
-    def __unicode__(self):
-        return u'%s %s %s %s' % (self.caption,self.author,self.publish_time,self.tags)
+   # def __unicode__(self):
+   #     return u'%s %s %s %s' % (self.caption,self.author,self.publish_time,self.tags)
 
     def tags_names(self):
         return ','.join([a.tag_name for a in self.tags.all()])

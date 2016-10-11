@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import Http404
 
 from .models import Blog,Tag,Author
-from .forms import BlogForm,TagForm,AuthorForm
+from .forms import BlogForm
 
 # Create your views here.
 
@@ -35,29 +35,32 @@ def blog_filter(request,id=""):
     blogs = tag.blog_set.all()
     return  render(request,"sblog/blog_filter.html",{"blogs":blogs,"tag":tag,"tags":tags})
 
-def blog_add(request,id=""):
+def blog_add(request):
     if request.method == "POST":
         form = BlogForm(request.POST)
        # tag = TagForm(request.POST)
        # author = AuthorForm(request.POST)
 
         if form.is_valid():
-            cdBlog = form.cleaned_data
+            form.save()
            # cdTag = tag.cleaned_data
            # cdAuthor = author.cleaned_data
            # tagname = cdTag['tag_name']
            # for taglist in tagname.split():
            #     Tag.objects.get_or_create(tag_name = taglist.strip())
-            title = cdBlog['caption']
-            author = Author.objects.get_or_create(name=cdBlog['author'])
-            content = cdBlog['content']
-            tags = Tag.objects.get_or_create(tag_name=cdBlog['tags'])
-            blog = Blog(caption=title,author=author,content=content,tag=tags)
+
+           # author = Author.objects.get_or_create(name=cdBlog['author'])
+
+           # tags = Tag.objects.get_or_create(tag_name=cdBlog['tags'])
+           # blog = Blog(caption=title,author=cdBlog['author'],content=content,tags=cdBlog['tags'])
            # for taglist in taglist.split():
            #     blog.tags.add(Tag.objects.get(tag_name=taglist.strip()))
-            blog.save()
+           # blog.save()
             id = Blog.objects.order_by('-publish_time')[0].id
-            print("DONE")
+            try:
+                print(BlogForm.__dict__)
+            except Exception as ex:
+                print(ex)
             return redirect("/sblog/blog/%s" % id)
         else:
             print(form.is_valid())
@@ -74,35 +77,43 @@ def blog_update(request,id=""):
     if request.method == "POST":
         form = BlogForm(request.POST)
        # tag = TagForm(request.POST)
-        if form.is_valid() and tag.is_valid():
+        if form.is_valid():
+            form.save(blog)
+
+            """
             cd = form.cleaned_data
-           # cdtag = tag.cleaned_data
-           # tagname = cdtag['tag_name']
-           # tagnamelist = tagname.split()
-           # for tag in tagnamelist:
-           #     Tag.objects.get_or_create(tag_name=tag.strip())
+            cdtag = tag.cleaned_data
+            tagname = cdtag['tag_name']
+            tagnamelist = tagname.split()
+            for tag in tagnamelist:
+                Tag.objects.get_or_create(tag_name=tag.strip())
             title = cd['caption']
             content = cd['content']
 
             if blog:
                 blog.caption = title
                 blog.content = content
+
                 blog.save()
-               # for tag in tagnamelist:
-               #     blog.tags.add(Tag.objects.get(tag_name=tag.strip()))
-               #     blog.save()
-               # tags = blog.tags.all()
-               # for tag in tags:
-               #     tag = str(tag)
-               #     if tag not in tagnamelist:
-               #         notag = blog.tags.get(tag_name=tag)
-               #         blog.tags.remove(notag)
+                for tag in tagnamelist:
+                    blog.tags.add(Tag.objects.get(tag_name=tag.strip()))
+                    blog.save()
+                tags = blog.tags.all()
+                for tag in tags:
+                    tag = str(tag)
+                    if tag not in tagnamelist:
+                        notag = blog.tags.get(tag_name=tag)
+                        blog.tags.remove(notag)
+
             else:
                 blog = Blog(caption=title,content=content)
                # for tag in tagnamelist:
                #     blog.tags.add(Tag.objects.get(tag_name=tag.strip()))
                 blog.save()
+            """
             return redirect('/sblog/blog/%s' % id)
+        else:
+            print(form.is_valid())
     else:
         try:
             blog = Blog.objects.get(id=id)
