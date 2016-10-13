@@ -10,10 +10,10 @@
                 <h2 style="color: #dd1144;text-align: center;">{{ blog.caption }}</h2>
             {% endblock %}
             <div class="row text-muted">
-                <div class="col-md-6 col-md-offset-2">
+                <div class="col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-2">
                     <i class="glyphicon glyphicon-user"></i><small>作者:{{ blog.author }}</small>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-lg-4">
                     <i class="glyphicon glyphicon-time " ></i><small>更新时间:{{ blog.update_time }}</small>
                 </div>
             </div>
@@ -25,22 +25,22 @@
                 {% endblock %}
 
                 <div class="row">
-                <div class="col-md-10">
-                    <p>
-                        {% for tag in blog.tags.all %}
-                            <span style="background-color: #66afe9;padding: 3px;color: #dd1144;border-radius: 5px;"><i class="glyphicon glyphicon-tag"></i>
-                            <small class="text-muted">{{ tag }}</small></span>
-                        {% endfor %}
-                    </p>
+                    <div class="col-md-10 col-lg-10">
+                        <p>
+                            {% for tag in blog.tags.all %}
+                                <span style="background-color: #66afe9;padding: 3px;color: #dd1144;border-radius: 5px;"><i class="glyphicon glyphicon-tag"></i>
+                                <small class="text-muted">{{ tag }}</small></span>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2">
+                        <a href="{% url 'sblog:updateblog' blog.id %}" title="edit"><i class="glyphicon glyphicon-edit col-md-offset-1"></i> </a>
+                        <a href="{% url 'sblog:delblog' blog.id %}" title="delete" ><i class="glyphicon glyphicon-trash col-md-offset-1"></i> </a>
+                        {% load threadedcomments_tags %}
+                        {% get_comment_count for blog as comment_count %}
+                        <a href="#cmt" title="comment"><i class="glyphicon glyphicon-comment col-md-offset-1"></i>{{ comment_count }} </a>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <a href="{% url 'sblog:updateblog' blog.id %}" title="edit"><i class="glyphicon glyphicon-edit col-md-offset-1"></i> </a>
-                    <a href="{% url 'sblog:delblog' blog.id %}" title="delete" ><i class="glyphicon glyphicon-trash col-md-offset-1"></i> </a>
-                    {% load threadedcomments_tags %}
-                    {% get_comment_count for blog as comment_count %}
-                    <a href="#cmt" title="comment"><i class="glyphicon glyphicon-comment col-md-offset-1"></i>{{ comment_count }} </a>
-                </div>
-            </div>
             </div>
         </article>
     </div>

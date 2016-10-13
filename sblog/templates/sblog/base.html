@@ -41,8 +41,8 @@
                 {# 这个区块用来放置页面正文内容,任何页面正文内容都可能不一样,它不包含任何站点导航,信息头,页脚,或其它任何属于base模版的东东 #}
 
                 <div class="container-fluid">
-                    <div class="row-fluid">
-                        <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-10">
                             {% block article %}
                                 {% block article_title %}
                                     {% comment %}
@@ -61,7 +61,7 @@
                             {% block article_menu %}{% endblock %}
                             {% block mycomments %}{% endblock %}
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-lg-2">
                             {% block aside %}
                                 {% block tags %}{% endblock %}
                             {% endblock %}

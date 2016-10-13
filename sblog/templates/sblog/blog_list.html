@@ -5,7 +5,7 @@
 {% block title %} blog list {% endblock %}
 
 {% block article %}
-<article class="container-fluid">
+<article class="container-fluid" >
     {% for blog in blogs %}
         <p class="text-muted">
             {% for tag in blog.tags.all %}
@@ -15,29 +15,33 @@
         {% load custom_markdown %}
         <h2 class="text-center"><a href="{% url 'sblog:detailblog' blog.id %}">{{ blog.caption }}</a></h2>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-6">
                 <h3>作者:{{ blog.author }}</h3>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-6">
                 <h3 class="text-muted"><i class="glyphicon glyphicon-time"></i><small>发布时间:{{ blog.publish_time }}</small> </h3>
             </div>
         </div>
 
         <button class="btn btn-warning" onclick="toggle({{ blog.id }})">SHOW CONTENT</button>
-        <div class="row" id="{{ blog.id }}" style="display: none;">{{ blog.content|custom_markdown }}</div>
+        <div class="row" id="{{ blog.id }}" style="display: none;">
+            <div class="col-lg-12">
+                {{ blog.content|custom_markdown }}
+            </div>
+        </div>
 
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-10 col-lg-10">
                 <p class="text-muted"><i class="glyphicon glyphicon-time"></i><small>更新时间:{{ blog.update_time }}</small> </p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-lg-2">
                 <a href="{% url 'sblog:updateblog' blog.id %}" title="edit"><i class="glyphicon glyphicon-edit"></i> </a>
                 <a href="{% url 'sblog:delblog' blog.id %}" title="delete"><i class="glyphicon glyphicon-trash col-md-offset-1"></i></a>
                 {% get_comment_count for blog as comment_count %}
                 <a href="{% url 'sblog:detailblog' blog.id %}#cmt" title="comment"><i class="glyphicon glyphicon-comment col-md-offset-1"></i>{{ comment_count }} </a>
             </div>
         </div>
-        <hr style="filter:alpha(opacity=100,finishopacity=0,style=2);width:600px;background-color:#ebcccc;height:5px" />
+        <hr style="filter:alpha(opacity=100,finishopacity=0,style=2);width:100%;background-color:#ebcccc;height:5px" />
     {% endfor %}
 </article>
 {% endblock %}
@@ -45,12 +49,12 @@
 {% block aside %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12" style="position: relative;top: 50px;">
+            <div class="col-md-12 col-lg-12" style="position: relative;top: 50px;">
                 <a class="btn-success btn-lg " style=" text-decoration: none" href="{% url 'sblog:addblog' %}">
                     <i class="icon-plus"></i>add new blog
                 </a>
             </div>
-            <div class="col-md-12" style="position: relative;top: 100px">
+            <div class="col-md-12 col-lg-12" style="position: relative;top: 100px">
                 {% block tags %}
                 <div class="well well-large">
                 {% for tag in tags %}
