@@ -45,13 +45,12 @@
         </article>
     </div>
 
-    {% comment %}
     {% block mycomments %}
-        <h2>Comments for {{ blog.title }}:</h2>
+        <h2>Comments for {{ blog.caption }}:</h2>
         {% render_comment_list for blog %}   <!--这段代码有问题-->
         {% render_comment_form for blog %}
     {% endblock %}
-    {% endcomment %}
+
     {% endblock %}
 {% endblock %}
 

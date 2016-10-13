@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load threadedcomments_tags %}
+
+<div class="comments_length">
+    <p>{{ comment_list|length }} Comments</p>
+</div>
+
+<div class="comments">
+    {% for comment in comment_list|fill_tree|annotate_tree %}
+        {% if comment.parent_id and not comment.open %}
+            </div>
+            </div>
+        {% endif %}
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img src="http://placehold.it/64x64" class="media-object" alt="">
+            </a>
+            <div class="media-body" id="c{{ comment.id }}">
+                <h4 class="media-heading">
+                    {{ comment.user_name }}
+                    <small>
+                        {{ comment.submit_data }}
+                        | <a href="#c{{ comment.id }}" data-comment-id="{{ comment.id }}" class="comment_reply_link">Reply</a>
+                    </small>
+                </h4>
+                {{ comment.comment|linebreaks }}
+                {% for close in comment.close %}
+                    </div></div>
+                {% endfor %}
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
