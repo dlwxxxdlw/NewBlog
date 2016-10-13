@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c2c67025-1f68-416a-a33a-4c7ac335fa90" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mycomments/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mycomments/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blogDemo/settings.py" afterPath="$PROJECT_DIR$/blogDemo/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sblog/templates/sblog/blog_show.html" afterPath="$PROJECT_DIR$/sblog/templates/sblog/blog_show.html" />
-    </list>
+    <list default="true" id="c2c67025-1f68-416a-a33a-4c7ac335fa90" name="Default" comment="" />
     <ignored path="blogDemo.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
