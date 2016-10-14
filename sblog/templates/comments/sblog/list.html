@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load threadedcomments_tags %}
+{% load custom_markdown %}
 
 <div class="comments_length">
     <p>{{ comment_list|length }} Comments</p>
@@ -22,7 +23,7 @@
 					</div>
                 </div>
                 <div class="comment_text">
-					{{ comment.comment }}
+					{{ comment.comment|custom_markdown }}
 				</div>
 			</div>
 			{% for close in comment.close %}

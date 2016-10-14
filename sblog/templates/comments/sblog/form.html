@@ -11,8 +11,8 @@
                 {% if next %}
                     <div><input type="hidden" name="next" value="{{ next }}"/></div>
                 {% endif %}
-                {% crispy form %}
-                <button type="submit" class="btn btn-primary btn-lg col-lg-offset-4">Submit</button>
+                {{ form|crispy }}
+                <button type="submit" class=" btn btn-primary btn-lg col-lg-offset-4">Submit</button>
                 <button id="cancel_reply" type="button" class="btn btn-lg btn-info col-lg-offset-1">Cancel Reply</button>
             </form>
         </div>
