@@ -47,8 +47,14 @@
 
     {% block mycomments %}
         <h2>Comments for {{ blog.caption }}:</h2>
-        {% render_comment_list for blog %}   <!--这段代码有问题-->
-        {% render_comment_form for blog %}
+        {% render_comment_list for blog.id %}   <!--这段代码有问题-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10">
+                    {% render_comment_form for blog %}
+                </div>
+            </div>
+        </div>
     {% endblock %}
 
     {% endblock %}

@@ -44,10 +44,9 @@ INSTALLED_APPS = [
     'django_comments',
     'pagedown',
     'crispy_forms',
-    'mycomments',
 ]
 
-COMMENTS_APP = 'mycomments'
+COMMENTS_APP = 'threadedcomments'
 
 SITE_ID = 1
 

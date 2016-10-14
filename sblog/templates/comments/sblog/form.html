@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Comments Form-->
+{% load comments i18n crispy_forms_tags %}
+
+<div id="wrap-form-comment">
+    <div class="well row" id="form-comment">
+        <div class="col-lg-12 col-md-12">
+            <h4>Leave a Comment:</h4>
+            <form role="form" action="{% comment_form_target %}" method="post">
+                {% csrf_token %}
+                {% if next %}
+                    <div><input type="hidden" name="next" value="{{ next }}"/></div>
+                {% endif %}
+                {% crispy form %}
+                <button type="submit" class="btn btn-primary btn-lg col-lg-offset-4">Submit</button>
+                <button id="cancel_reply" type="button" class="btn btn-lg btn-info col-lg-offset-1">Cancel Reply</button>
+            </form>
+        </div>
+    </div>
+</div>
