@@ -20,20 +20,20 @@ def blog_show(request,id):
 
 def blog_del(request,id=""):
     try:
-        blog = Blog.objects.get(id = id)
+        blog = Blog.objects.get(id=id)
     except Exception:
         raise Http404
     if blog:
         blog.delete()
         return  redirect("/sblog/bloglist/")
     blogs = Blog.objects.all()
-    return render(request,"sblog/blog_list.html",{"blogs":blogs})
+    return render(request,"sblog/blog_list.html", {"blogs": blogs})
 
 def blog_filter(request,id=""):
     tags = Tag.objects.all()
     tag = Tag.objects.get(id = id)
     blogs = tag.blog_set.all()
-    return  render(request,"sblog/blog_filter.html",{"blogs":blogs,"tag":tag,"tags":tags})
+    return  render(request,"sblog/blog_list.html", {"blogs": blogs, "tags": tags})
 
 def blog_add(request):
     if request.method == "POST":

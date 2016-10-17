@@ -10,8 +10,11 @@ class Tag(models.Model):
     tag_name = models.CharField(u'标签',max_length=100,blank=True)
     create_time = models.DateTimeField(u'创建时间',auto_now_add=True)
 
-    def __unicode__(self):
-        return  self.tag_name
+   # def __unicode__(self):
+   #     return  self.tag_name
+
+    def __str__(self):
+        return self.tag_name
 
 class Author(models.Model):
     """docstring for Author"""
@@ -19,7 +22,10 @@ class Author(models.Model):
     email = models.EmailField(u'电子邮箱',blank=True)
     website = models.URLField(u'网址',blank=True)
 
-    def __unicode__(self):
+   # def __unicode__(self):
+   #     return self.name
+
+    def __str__(self):
         return self.name
 
 class Blog(models.Model):

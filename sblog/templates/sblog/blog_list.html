@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-12" style="position: relative;top: 50px;">
                 <a class="btn-success btn-lg " style=" text-decoration: none" href="{% url 'sblog:addblog' %}">
-                    <i class="icon-plus"></i>add blog
+                    <i class="icon-plus"></i>add new blog
                 </a>
             </div>
             <div class="col-md-12 col-lg-12" style="position: relative;top: 100px">
@@ -60,6 +60,7 @@
                 {% for tag in tags %}
                     <span class="label label-danger"><a style="color: #f9f9f9; font-size: 15px; padding: 2px" href="{% url 'sblog:filterblog' tag.id %}">{{ tag.tag_name }}</a></span>
                 {% endfor %}
+                <span class="label label-primary"><a style="color: #f9f9f9; font-size: 15px; padding: 2px" href="{% url 'sblog:bloglist' %}">ALL</a> </span>
                 </div>
                 {% endblock %}
             </div>
